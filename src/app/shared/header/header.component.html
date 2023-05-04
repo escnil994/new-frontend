@@ -1,0 +1,35 @@
+<div class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient text-white">
+
+    <div id="logo" routerLink="/blog">
+        <span class="gear">S</span>
+        <h3>ESCNIL994</h3>
+    </div>
+
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse general-text items-header" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ms-auto d-flex">
+            <li class="list-item m-3">
+                <a class="text-white" [routerLink]="['blog/get-all-posts']">Blog</a>
+            </li>
+            <li class="list-item m-3" >
+                <a class="text-white" [routerLink]="['portfolio/get-all-projects']">Proyects</a>
+            </li>
+            <li class="list-item m-3">
+                <a class="text-white" href="">Who is Nilson?</a>
+            </li>
+            <li class="list-item m-3">
+                <a  class="text-white" href="">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+</div>
