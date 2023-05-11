@@ -10,7 +10,7 @@ import { Project } from '../models/project.model';
 
 
 const backend_url = environment.backend
- 
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,18 +27,18 @@ export class ProjectService {
 
 
 
-  getProjects(){
+  getProjects(from: number = 0, limit: number = 0) {
 
-    const url = `${backend_url}project/get-projects`;
+    const url = `${backend_url}project/get-projects?from=${from}&limit=${limit}`;
+    console.log(url);
+
 
     return this._http.get<ProjectInterface>(url).pipe(
-      map( res => {
-        const projects = res.projects.map(
-          projects => new Project(projects.title, projects.subtitle, projects.content, projects.github, projects.url, projects.video, projects.date, projects.image)
-        )
-
-
-        return projects
+      map(({ total, projects }) => {
+        return{
+          total,
+          projects
+        }
       })
     )
 

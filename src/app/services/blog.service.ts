@@ -27,20 +27,22 @@ export class BlogService {
 
 
 
-  getPosts(){    
-    
+  getPosts(from: number = 0, limit: number = 0) {
 
-    const url: string = `${this.backend_url}/blog/get-posts`
+
+    const url: string = `${this.backend_url}blog/get-posts?from=${from}&limit=${limit}`
+
+    console.log(url);
 
     return this._http.get<PostInterface>(url).pipe(
-      map( res => {
-        const posts = res.posts.map(
-          posts => new Post(posts.title, posts.intro, posts.content, posts.author, posts.url, posts.date, posts.image)
-        )
+      map(({ total, posts }) => {
 
-        return posts
+        return {
+          total,
+          posts
+        }
       })
     )
-    
+
   }
 }

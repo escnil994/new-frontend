@@ -8,33 +8,77 @@ import { BlogService } from 'src/app/services/blog.service';
   styles: [
   ]
 })
-export class GetAllComponent implements OnInit{
+export class GetAllComponent implements OnInit {
 
-  
-  public posts: Post [] = []
+
+
+  public posts: Post[] = []
+
+  public limit: number = 2
+
+  public from: number = 0
+
+
+  public total: number = 0
+
+
+  public next: string = 'btn-primary'
+
+  public previous: string = 'btn-secondary'
 
 
   constructor(
     private blogService: BlogService
-  ){
- 
+  ) {
+
   }
   ngOnInit(): void {
-    
-    this.blogService.getPosts().subscribe(posts => {
+
+    this.getPosts()
 
 
-      console.log(posts.length);
-      
+  }
+
+
+  getPosts() {
+
+
+    this.blogService.getPosts(this.from, this.limit).subscribe(({ total, posts }) => {
+      this.total = total
+
       this.posts = posts
-
 
     })
 
 
+
   }
 
 
 
+  changePage(value: number = 0) {
+
+    if(value === 0){
+      this.next = 'btn-primary'
+      this.previous = 'btn-secondary'
+    }
+    this.next = 'btn-primary'
+    this.previous = 'btn-primary'
+
+
+    this.from += value
+
+    if (this.from <= 0) {
+      this.from = 0
+      this.previous = 'btn-secondary'
+
+    } else if (this.from >= this.total-this.limit) {
+      this.from = this.total
+      this.next = 'btn-secondary'
+      this.from -= value
+    }
+
+    this.getPosts()
+  }
 
 }

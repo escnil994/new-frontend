@@ -1,40 +1,49 @@
-
 <div class="loading" *ngIf="!projects">
-    <div class="spinner-grow" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-    
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
   </div>
-  <div class="loading" *ngIf="projects.length == 0">
-    <h3>No hay Ningun proyecto por el momento, pero puedes empezar a crear</h3>
+</div>
+<div class="loading" *ngIf="projects.length == 0">
+  <h3>No hay proyectos</h3>
+</div>
+
+<div id="body">
+  <h3>Mostrando todos los proyectos {{from}}</h3>
+  <hr />
+  <div id="posts" class="mt-3" *ngFor="let project of projects">
+    <article id="showed-post">
+      <div id="post-title-item">
+        <h4>
+          <span id="post-title">{{ project.title }}</span>
+        </h4>
+      </div>
+      <div id="post-image-item">
+        <img src="{{ project.image.secure_url }}" alt="" />
+      </div>
+      <div id="content-post">
+        <h5 id="post-intro">{{ project.subtitle }}</h5>
+      </div>
+      <span class="date-post">
+        <img
+          class="default-user-autor"
+          src="https://res.cloudinary.com/escnil994/image/upload/v1603960708/angular/user_yldyfw.png"
+          alt="autor"
+        />{{ project.content }}<span id="logo-time">P</span>
+        {{ project.date | date }}
+      </span>
+      <div class="clearfix"></div>
+    </article>
   </div>
 
-
-  
-  <div id="body">
-
-    <h3>Mostrando todos los posts</h3>
-    <hr>
-    <div id="posts" class="mt-3" *ngFor="let project of projects">
-      <article id="showed-post" >
-        <div id="post-title-item">
-          <h4><span id="post-title">{{ project.title }}</span></h4>
-        </div>
-        <div id="post-image-item">
-          <img src="{{ project.image.secure_url }}" alt="">
-        </div>
-        <div id="content-post">
-          <h5 id="post-intro">{{ project.subtitle }}</h5>
-        </div>
-        <span class="date-post">
-          <img class="default-user-autor"
-               src="https://res.cloudinary.com/escnil994/image/upload/v1603960708/angular/user_yldyfw.png"
-               alt="autor">{{ project.content }}<span
-          id="logo-time">P</span> {{ project.date | date }}
-        </span>
-        <div class="clearfix"></div>
-  
-      </article>
-    </div>
+  <br />
+  <br />
+  <div class="pagination justify-content-center">
+    <button class="btn" ngClass="{{ previous }}" (click)="changePage(-2)">
+      Previous
+    </button>
+    &nbsp;
+    <button class="btn" ngClass="{{ next }}" (click)="changePage(2)">
+      Next >
+    </button>
   </div>
-  
+</div>
