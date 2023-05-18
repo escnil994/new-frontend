@@ -1,3 +1,3 @@
 export const environment = {
-    backend: 'https://escnil994-backend.azurewebsites.net/api/'
+  backend: 'http://localhost:3100/api/'
 };

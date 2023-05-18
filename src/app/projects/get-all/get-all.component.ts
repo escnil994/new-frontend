@@ -46,9 +46,7 @@ export class GetAllComponent {
 
     this.projectService.getProjects(this.from, this.limit).subscribe(({ total, projects }) => {
       this.total = total
-      console.log(total);
 
-      console.log(projects);
 
 
 

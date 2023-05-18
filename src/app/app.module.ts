@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { MainPageComponent } from './main/main-page/main-page.component';
 import { PostsModule } from './posts/posts.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentModule } from './comments/comments.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     SharedModule,
     PostsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

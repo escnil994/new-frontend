@@ -24,7 +24,7 @@ export class GetAllComponent implements OnInit {
 
   public next: string = 'btn-primary'
 
-  public previous: string = 'btn-secondary'
+  public previous: string = 'disabled'
 
 
   constructor(
@@ -60,7 +60,7 @@ export class GetAllComponent implements OnInit {
 
     if(value === 0){
       this.next = 'btn-primary'
-      this.previous = 'btn-secondary'
+      this.previous = 'disabled'
     }
     this.next = 'btn-primary'
     this.previous = 'btn-primary'
@@ -70,11 +70,11 @@ export class GetAllComponent implements OnInit {
 
     if (this.from <= 0) {
       this.from = 0
-      this.previous = 'btn-secondary'
+      this.previous = 'disabled'
 
     } else if (this.from >= this.total-this.limit) {
       this.from = this.total
-      this.next = 'btn-secondary'
+      this.next = 'disabled'
       this.from -= value
     }
 

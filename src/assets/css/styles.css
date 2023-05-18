@@ -36,6 +36,18 @@
   /*FUENTES*/
 }
 
+.text-left{
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
+}
+
+
+.w-65{
+  width: 65%;
+}
 
 .general-text{
   font-family: BebasNeue;
@@ -355,7 +367,6 @@ body {
 #content {
   width: 73%;
   float: left;
-  min-height: 1500px;
   margin-right: 20px;
 }
 

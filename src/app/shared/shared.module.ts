@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { BannerComponent } from './banner/banner.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { CommentModule } from '../comments/comments.module';
 
 
 @NgModule({
@@ -17,12 +18,13 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule, 
+    SharedRoutingModule,
+    CommentModule
   ],
 
   exports: [
     HeaderComponent,
-    BannerComponent, 
+    BannerComponent,
     SidebarComponent,
     FooterComponent
   ]
