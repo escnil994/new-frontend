@@ -9,6 +9,7 @@ import { MainPageComponent } from './main/main-page/main-page.component';
 import { PostsModule } from './posts/posts.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentModule } from './comments/comments.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CommentModule } from './comments/comments.module';
     SharedModule,
     PostsModule,
     HttpClientModule,
-    CommentModule
+    CommentModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

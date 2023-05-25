@@ -32,7 +32,6 @@ export class BlogService {
 
     const url: string = `${this.backend_url}blog/get-posts?from=${from}&limit=${limit}`
 
-    console.log(url);
 
     return this._http.get<PostInterface>(url).pipe(
       map(({ total, posts }) => {
@@ -41,6 +40,19 @@ export class BlogService {
           total,
           posts
         }
+      })
+    )
+
+  }
+
+
+
+  getPost(id: string){
+    const url: string = `${this.backend_url}blog/get-post/${id}`
+
+    return this._http.get<PostInterface>(url).pipe(
+      map(({post, ok}) => {
+        return {post, ok}
       })
     )
 

@@ -11,16 +11,22 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class CreateCommentComponent {
 
+  public comments: Comment [] = []
+
+
   public success: boolean = false
 
   public name: string = ''
 
   public formSubmitted: boolean = false
 
+
+
   public commentForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(8)]],
     email: ['', [Validators.required, Validators.email]],
-    comment: ['', [Validators.required, Validators.minLength(12)]]
+    comment: ['', [Validators.required, Validators.minLength(12)]],
+    color: ['']
   })
 
   constructor(
@@ -32,12 +38,18 @@ export class CreateCommentComponent {
 
 
   createComment() {
+    this.commentForm.value.color = this.getRandomColor()
 
     this.formSubmitted = true
 
     if (this.commentForm.valid) {
 
       this._commentService.createComment(this.commentForm.value).subscribe((comment: any) => {
+
+        this.commentForm.reset()
+        this.formSubmitted = false
+
+
 
         if (comment.ok) {
           this.name = comment.comment.name
@@ -47,6 +59,8 @@ export class CreateCommentComponent {
           }, 3000);
 
         }
+
+
 
       }, err => {
         console.log(err);
@@ -63,6 +77,15 @@ export class CreateCommentComponent {
     } else {
       return false
     }
+  }
+
+
+
+
+
+  getRandomColor() {
+    var color = Math.floor(0x1000000 * Math.random()).toString(16);
+    return '#' + ('000000' + color).slice(-6);
   }
 
 

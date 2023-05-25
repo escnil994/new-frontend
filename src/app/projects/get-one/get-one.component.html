@@ -1,0 +1,45 @@
+<div id="body">
+    <h1 class="subheader">{{project?.title || ''}}</h1>
+    <article class="project-detail">
+      <div class="image-wrap-unit">
+        <img src="{{project?.image?.secure_url || ''}}" alt="Project image"/>
+      </div>
+      <div class="date text-secondary font-weight-bold text-capitalize">
+        <span>
+          {{project?.date | date }}
+        </span>
+      </div>
+      <br>
+      <div class="details">
+        <h2 class="text-center">Descripción:</h2>
+        <p>
+          {{project?.content}}
+        </p>
+      </div>
+      <div class="details">
+        <h2 class="text-center">Comentarios:</h2>
+        <p>
+          {{project?.more}}
+        </p>
+      </div>
+      <div class="details">
+        <h4 class="text-center">Puedes ver en la siguiente url:</h4>
+        <a class="font-weight-bold text-lg" id="url" href="{{project?.url}}">{{project?.title}}</a>
+      </div>
+
+
+      <div class="video">
+        <h4>Tambien puedes ver el video donde te doy una pequeña expliación de como está echo:</h4>
+        <div id="video">
+          <!---<youtube-player videoId="{{project?.video || ''}}" [width]="375" [height]="200"></youtube-player>--->
+        </div>
+      </div>
+
+
+      <div class="clearfix"></div>
+
+    </article>
+
+</div>
+
+

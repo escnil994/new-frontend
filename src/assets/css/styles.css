@@ -36,6 +36,10 @@
   /*FUENTES*/
 }
 
+#persona-info{
+  background-color: white;
+}
+
 .text-left{
   text-align: left;
 }
@@ -832,6 +836,10 @@ aside .sp {
   animation: blink 10s infinite linear;
 }
 
+.user-image{
+
+}
+
 @keyframes blink {
   0% {
     border: 10px solid #37bcf9;
@@ -937,7 +945,7 @@ aside .sp {
 }
 
 .default-user {
-  width: 5%;
+  width: 10%;
   border-radius: 60px;
 }
 
@@ -1038,8 +1046,11 @@ aside .sp {
 }
 
 .default-user-autor {
-  width: 3%;
+  width: 3.5%;
   border-radius: 60px;
+  padding-bottom: 5px;
+  color: #000000;
+  font-weight: bold;
 }
 
 .date-post {
@@ -1055,7 +1066,7 @@ aside .sp {
 
 #logo-time {
   font-family: WebSymbolsRegular;
-  margin-left: 20%;
+  padding-bottom: 4px;
 }
 
 #post-div {
@@ -1157,4 +1168,30 @@ aside .sp {
   width: 60px;
 }
 
+
+.image-user{
+  border-radius: 50%;
+}
+
+
+.circulo{
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  }
+
+.img-thumbnail{
+  border-radius: 50% !important;
+}
+
+#contact-item{
+  text-decoration: none;
+
+}
+
+#contact-item:hover{
+  color: #000000 !important;
+  text-decoration:line-through;
+}
 

@@ -8,14 +8,15 @@
 </div>
 
 <div id="body">
-  <h3>Mostrando todos los posts ({{ total }})  totL= {{from}}</h3>
+  <h3 class="general-text">POSTS ({{total}})</h3>
   <hr />
-  <div id="posts" class="mt-3" *ngFor="let post of posts">
+  <div id="posts" class="mt-3" *ngFor="let post of posts" routerLink="get-post/{{post._id}}&{{post.title}}">
     <article id="showed-post">
       <div id="post-title-item">
         <h4>
           <span id="post-title">{{ post.title }}</span>
         </h4>
+
       </div>
       <div id="post-image-item">
         <img src="{{ post.image.secure_url }}" alt="" />
@@ -23,20 +24,39 @@
       <div id="content-post">
         <h5 id="post-intro">{{ post.intro }}</h5>
       </div>
-      <span class="date-post">
-        <img
-          class="default-user-autor"
-          src="https://res.cloudinary.com/escnil994/image/upload/v1603960708/angular/user_yldyfw.png"
-          alt="autor"
-        />{{ post.author }}<span id="logo-time">P</span> {{ post.date | date }}
-      </span>
-      <div class="clearfix"></div>
+
+
+      <div class="row">
+        <div class="col-6">
+          <span>
+            <img
+              class="default-user-autor"
+              src="https://res.cloudinary.com/dorqesogu/image/upload/v1684945877/utils/149071_vbgvli.png"
+              alt="autor"
+            />
+            <span class="text-secondary fst-italic" >Nilson Escobar</span>
+          </span>
+        </div>
+
+        <div class="col-6">
+          <span>
+            <img
+              class="default-user-autor"
+              src="https://res.cloudinary.com/dorqesogu/image/upload/v1684945540/utils/109613_cd9hmd.png"
+              alt="Date"
+            />
+            <span class="text-secondary fst-italic" >{{ post.date | date }}</span>
+          </span>
+        </div>
+      </div>
+
+
     </article>
   </div>
 
   <br />
   <br />
-  <div class="pagination justify-content-center">
+  <div class="pagination justify-content-center" *ngIf="total>limit">
     <button class="btn" ngClass="{{previous}}" (click)="changePage(-2)">Previous</button>
     &nbsp;
     <button class="btn" ngClass="{{next}}" (click)="changePage(2)">Next ></button>

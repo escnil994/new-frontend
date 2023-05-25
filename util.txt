@@ -1,6 +1,19 @@
 
 
 
+        <div class="w-50">
+          <span class="material-symbols-outlined text-left"> favorite </span>
+          Like
+        </div>
+
+        <div>
+          <span class="material-symbols-outlined text-right">
+            account_circle
+          </span>
+          Like
+        </div>
+
+
 
 
 

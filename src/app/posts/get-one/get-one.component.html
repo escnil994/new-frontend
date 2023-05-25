@@ -1,1 +1,29 @@
-<p>get-one works!</p>
+<div id="body">
+    <h1 class="subheader m-3">{{post?.title}}</h1>
+    <article class="project-detail">
+      <div class="image-wrap-unit">
+        <img src="{{post?.image?.secure_url}}" alt="Porject image"/>
+      </div>
+      <div class="date text-secondary font-weight-bold text-capitalize">
+        <span>
+          {{post?.date | date }}
+        </span>
+        <span>
+          {{'Nilson Escobar'}}
+        </span>
+      </div>
+      <br>
+      <div class="details">
+        <h6>{{post?.intro}}</h6>
+        <p>{{post?.content}}</p>
+      </div>
+
+      <div class="post-url">
+        <a href="{{post?.url}}" target="_blank"><h4>Ver mas</h4></a>
+      </div>
+
+
+    </article>
+
+
+</div>

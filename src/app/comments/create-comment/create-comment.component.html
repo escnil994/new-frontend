@@ -24,18 +24,18 @@
       <h2>Leave me a comment</h2>
       <div class="form-outline form-white mb-4">
         <div>
-          <code class="text-danger" *ngIf="validateFields('name')">El nombre debe tener al menos 8 caracteres</code>
+          <code class="text-danger" *ngIf="validateFields('name')">Name must have at least 8 characters</code>
         </div>
         <input type="text" id="form5Example22" class="form-control text-center" formControlName="name" placeholder="Name is required" />
         <label class="form-label" for="form5Example22">Name</label>
         <div>
-          <code class="text-danger" *ngIf="validateFields('email')">El email debe tener al menos 8 caracteres</code>
+          <code class="text-danger" *ngIf="validateFields('email')">Email must be valid</code>
         </div>
         <input type="email" id="form5Example21" class="form-control" formControlName="email" placeholder="Email is required" />
         <label class="form-label" for="form5Example21">Email address</label>
         <div>
           <code class="text-danger"
-            *ngIf="validateFields('comment')">El commentario debe tener al menos 12 caracteres</code>
+            *ngIf="validateFields('comment')">Comment must have at least 12 characters</code>
         </div>
         <textarea class="form-label" formControlName="comment" ></textarea>
       </div>

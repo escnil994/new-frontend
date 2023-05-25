@@ -1,0 +1,64 @@
+<div id="body">
+  <h3 class="general-text">How can you get in contact with me?</h3>
+
+  <div class="row justify-content-center">
+    <div class="col-6 bg-light text-left">
+      <strong class="text-start m-3 text-secondary text-xl-left">Email: </strong><a target="_blank" id="contact-item"
+        href="mailto:escnil994@nilson-escobar.com" class="text-secondary">escnil994@nilson-escobar.com</a>
+      <br />
+      <strong class="text-start m-3 text-primary">Phone: </strong><a target="_blank" href="tel:50375068027"
+        id="contact-item" class="text-secondary">+503 7506-8027</a>
+      <br />
+      <strong class="text-start m-3 text-success">Whatsapp: </strong><a target="_blank" href="https://wa.me/50375068027"
+        class="text-secondary" id="contact-item">Write a message</a>
+      <br />
+      <strong class="text-start m-3 text-info">LinkedIn: </strong><a target="_blank" id="contact-item"
+        class="text-secondary" href="https://www.linkedin.com/in/escnil994/">See my profile</a>
+      <br />
+      <strong class="text-start m-3 text-primary">Facebook: </strong><a target="_blank" id="contact-item"
+        class="text-secondary" href="https://facebook.com/escnil994/">Go to my Facebook profile</a>
+      <br />
+      <strong class="text-start m-3">Github: </strong><a target="_blank" id="contact-item" class="text-secondary"
+        href="https://github.com/escnil994">
+        Go to check my projects on github</a>
+    </div>
+  </div>
+
+  <br />
+  <div class="row justify-content-center">
+    <div class="card w-75">
+      <form class="row needs-validation justify-content-center" (ngSubmit)="contactar()" [formGroup]="contactForm">
+        <h5>Contact me through form</h5>
+        <div class="col-md-5 position-relative">
+          <label class="form-label">Your name</label>
+          <input type="text" class="form-control" formControlName="name" />
+          <div>
+            <code *ngIf="validateFields('name')"></code>
+          </div>
+        </div>
+        <div class="col-md-5 position-relative">
+          <label class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="email" />
+          <div>
+            <code *ngIf="validateFields('email')"></code>
+          </div>
+        </div>
+
+        <div class="col-md-6 position-relative">
+          <label class="form-label">Message</label>
+          <textarea type="text" class="form-control" formControlName="message"></textarea>
+          <div>
+            <code *ngIf="validateFields('message')"></code>
+          </div>
+        </div>
+          <button *ngIf="habilitar" class="btn btn-primary w-50 disabled m-3" type="submit">
+            Fill in the form to enable this option
+          </button>
+
+          <button *ngIf="!habilitar" class="btn btn-primary w-50 m-3" type="submit">
+            Send Message
+          </button>
+      </form>
+    </div>
+  </div>
+</div>

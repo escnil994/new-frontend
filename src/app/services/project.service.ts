@@ -30,7 +30,6 @@ export class ProjectService {
   getProjects(from: number = 0, limit: number = 0) {
 
     const url = `${backend_url}project/get-projects?from=${from}&limit=${limit}`;
-    console.log(url);
 
 
     return this._http.get<ProjectInterface>(url).pipe(
@@ -43,6 +42,20 @@ export class ProjectService {
     )
 
 
+  }
+
+
+  getProject(id: string){
+    const url = `${backend_url}project/get-project/${id}`;
+
+    return this._http.get<ProjectInterface>(url).pipe(
+      map( ({project, ok}) => {
+        return {
+          project,
+          ok
+        }
+      })
+    )
   }
 
 }

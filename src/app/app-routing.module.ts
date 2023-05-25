@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { GetAllComponent } from "./posts/get-all/get-all.component";
 
 
 const routes: Routes = [
@@ -13,8 +12,16 @@ const routes: Routes = [
     loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
   },
   {
+    path: 'comment',
+    loadChildren: () => import('./comments/comments.module').then(c => c.CommentModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(a => a.AuthModule)
+  },
+  {
     path: '',
-    redirectTo: 'blog', 
+    redirectTo: 'blog',
     pathMatch: 'full'
   }
 ];

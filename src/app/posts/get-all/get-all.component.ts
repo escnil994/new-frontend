@@ -48,6 +48,7 @@ export class GetAllComponent implements OnInit {
 
       this.posts = posts
 
+
     })
 
 

@@ -1,8 +1,9 @@
 
 export class Project{
     constructor(
+        public _id: string,
         public title: string,
-        public subtitle: string,
+        public more: string,
         public content: string,
         public github: string,
         public url: string,
