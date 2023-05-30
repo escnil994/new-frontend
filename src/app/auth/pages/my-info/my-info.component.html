@@ -3,7 +3,7 @@
     <h3 class="general-text">This is my information</h3>
     <hr />
 
-    <div class="col-4 ">
+    <div [ngClass]="image">
       <div class="image-user">
         <img
           src="https://res.cloudinary.com/dorqesogu/image/upload/v1684950584/utils/B612_20220428_120412_479_b8uu8d.jpg"
@@ -17,9 +17,9 @@
       <code class="text-secondary">2019 - present</code>
     </div>
 
-    <div class="col-8">
-      <h5 class="general-text">Resume</h5>
-      <p>
+    <div [ngClass]="info">
+      <h3 class="general-text">Resume</h3>
+      <p class="text-size">
         I am a proactive person, an excellent teammate, organized and
         responsible. I really enjoy learning new things focused on technology,
         so my goal is a challenging and dynamic position where I can share my
@@ -29,41 +29,41 @@
       <hr />
 
       <div class="container m-3"  id="persona-info">
-        <h5 class="text-start">Experience:</h5>
+        <h3 class="text-start general-text">Experience:</h3>
 
-        <ul>
-          <li class="text-start"><strong>Tecnical Support Agent</strong></li>
+        <ul class="text-size">
+          <h4 class="text-start general-text">Tecnical Support Agent</h4>
           <code class="text-secondary">
-            <li class="list-group-item m-3 text-start">
+            <li class="list-group-item m-3 text-start text-size">
               Providing Support to residential customers, with services like:
               TV, Internet and Phone lines
             </li>
           </code>
 
-          <li class="text-start"><strong>Support Center Specialist</strong></li>
+          <h4 class="text-start general-text"><strong>Support Center Specialist</strong></h4>
           <code class="text-start text-secondary">
-            <li class="list-group-item text-start m-3">
+            <li class="list-group-item text-start m-3 text-size">
               Support for Dollarcity Stores with POS, Printers, Servers,
               Databases, phones (via remote)
             </li>
 
-            <li class="list-group-item text-start m-3">
+            <li class="list-group-item text-start m-3 text-size">
               Support for coworkers such as administrative, financial, others
               areas
             </li>
 
-            <li class="list-group-item text-start m-3">
+            <li class="list-group-item text-start m-3 text-size">
               Support for Dollarcity Stores with POS, Printers, Servers,
               Databases, phones (via remote)
             </li>
 
-            <li class="list-group-item text-start m-3">
+            <li class="list-group-item text-start m-3 text-size">
               Creating users in Active Directory, Office 365 and providing
               different access and user configurations like VPN, Emails,
               SharePoint, FTP Paths, others.
             </li>
 
-            <li class="list-group-item text-start m-3">
+            <li class="list-group-item text-start m-3 text-size">
               Network monitoring (Router, Switches, Network Link, ISP, Servers,
               Firewalls) with tool such as SolarWinds, Nagios, Cisco Meraki,
               Cisco Umbrella
@@ -72,11 +72,11 @@
         </ul>
         <br />
 
-        <h5 class="text-start">Skills:</h5>
+        <h4 class="text-start general-text">Skills:</h4>
         <div class="row">
           <div class="col-5">
-              <ul class="m-3">
-                <li class="text-start">HTML, CSS, JS</li>
+              <ul class="m-3 text-size">
+                <li class="text-start text-size">HTML, CSS, JS</li>
                 <li class="text-start">PHP</li>
                 <li class="text-start">Node JS</li>
                 <li class="text-start">Angular</li>

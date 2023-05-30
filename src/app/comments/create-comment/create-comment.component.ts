@@ -1,5 +1,5 @@
 import { Comment } from './../../models/comment.model';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { CommentService } from 'src/app/services/comment.service';
 
@@ -32,9 +32,7 @@ export class CreateCommentComponent {
   constructor(
     private fb: FormBuilder,
     private _commentService: CommentService
-  ) {
-
-  }
+  ) {}
 
 
   createComment() {
@@ -52,6 +50,12 @@ export class CreateCommentComponent {
 
 
         if (comment.ok) {
+
+          this._commentService.getComments().subscribe( (res: any) => {
+            this._commentService.commentsEvent.emit(res)
+          })
+
+
           this.name = comment.comment.name
           this.success = true
           setTimeout(() => {

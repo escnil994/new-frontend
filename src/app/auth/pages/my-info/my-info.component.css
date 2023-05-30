@@ -1,0 +1,16 @@
+
+@media (max-width: 900) {
+  .col-4{
+    width: 100% !important;
+  }
+  .col-8{
+    width: 100% !important;
+  }
+}
+
+
+
+
+.text-size{
+  font-size: 18px !important;
+}

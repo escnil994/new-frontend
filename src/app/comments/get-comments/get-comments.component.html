@@ -3,16 +3,19 @@
     <h4 class="text-left">{{total}} comments</h4>
     <hr />
     <br /><br />
+
     <div class="row w-65 m-auto" *ngFor="let item of comments">
-      <h4 *ngIf="!item.allowed" class="text-warning bg-primary">
-        This comment has been sent for autorization, is not approved yet
-      </h4>
-      <div class="col-1">
+      <code *ngIf="!item.allowed" class="text-warning">
+        This comment is not approved yet
+      </code>
+      <div class="col-2">
         <div class="circulo" [ngStyle]="{ 'background-color': item.color }">
-          <h1>{{ item.name.charAt(0) }}</h1>
+          <h1 class="icono">{{ item.name.charAt(0) }}</h1>
         </div>
       </div>
-      <div class="col-11">
+      <div class="col-10">
+
+
         <p class="text-left mb-0">
           <strong>{{ item.name }}</strong>
         </p>
@@ -41,4 +44,55 @@
   .material-symbols-outlined {
     font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 200, "opsz" 48;
   }
+
+
+
+
+
+
+@media (max-width: 1000px)
+{
+  .circulo{
+    height: 42px;
+    width: 42px;
+  }
+
+}
+
+
+
+@media (max-width: 650px)
+{
+
+  .circulo{
+    height: 35px;
+    width: 35px;
+  }
+
+  .icono{
+    font-size: 1.8rem;
+  }
+
+
+
+}
+@media (max-width: 500px)
+{
+
+  .col-10{
+    width: 100%;
+  }
+
+  .col-2{
+    display: none;
+  }
+
+
+
+}
+
+
+
+
+
 </style>

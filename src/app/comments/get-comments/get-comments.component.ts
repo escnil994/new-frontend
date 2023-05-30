@@ -8,9 +8,9 @@ import { CommentService } from 'src/app/services/comment.service';
   styles: [
   ]
 })
-export class GetCommentsComponent implements OnInit{
+export class GetCommentsComponent implements OnInit {
 
-  public comments: Comment [] = []
+  public comments: Comment[] = []
 
   public letter: string = ''
 
@@ -29,19 +29,28 @@ export class GetCommentsComponent implements OnInit{
 
   constructor(
     private _commentService: CommentService
-  ){
+  ) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
+
+    this._commentService.commentsEvent.subscribe((res: any) => {
+
+      this.comments = res.comments
+      this.total = res.total
+      this.changePage()
+
+
+    })
     this.getComments()
 
   }
 
 
 
-  getComments(){
-    this._commentService.getComments(this.from, this.limit).subscribe( (res) => {
+  getComments() {
+    this._commentService.getComments(this.from, this.limit).subscribe((res) => {
 
       this.comments = res.comments
 
@@ -55,7 +64,13 @@ export class GetCommentsComponent implements OnInit{
 
   changePage(value: number = 0) {
 
-    if(value === 0 || value < 0){
+    if (value === 0 ) {
+      this.from = 0
+      this.next = 'btn-primary'
+      this.previous = 'disabled'
+    }
+    if (value < 0 ) {
+      this.from = 0
       this.next = 'btn-primary'
       this.previous = 'disabled'
     }
@@ -69,12 +84,17 @@ export class GetCommentsComponent implements OnInit{
       this.from = 0
       this.previous = 'disabled'
 
-    } else if (this.from >= this.total-this.limit) {
+    } else if (this.from >= this.total - this.limit) {
       this.from = this.total
       this.next = 'disabled'
       this.from -= value
     }
 
+    if (value < 0 ) {
+      this.from = 0
+      this.next = 'btn-primary'
+      this.previous = 'disabled'
+    }
 
 
     this.getComments()

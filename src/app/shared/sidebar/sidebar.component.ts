@@ -20,6 +20,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.projectService.getProjects(0,2).subscribe(({total, projects}) => {
 
 

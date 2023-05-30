@@ -1,51 +1,50 @@
 <aside id="sidebar">
 
 
-    <div id="search" class="sidebar-item">
-      <h3 class="sp">Buscador</h3>
-      <div class="aside-box buscador">
-        <form >
-          <input name="search" id="bnt-look">
-          <input class="icon icon-look" type="submit" value="L">
-        </form>
-      </div>
+  <div id="search" class="sidebar-item">
+    <h3 class="sp">Buscador</h3>
+    <div class="aside-box buscador">
+      <form>
+        <input name="search" id="bnt-look" disabled placeholder="Not available yet">
+        <input class="icon icon-look" type="submit" value="L" disabled>
+      </form>
     </div>
-    <div id="nav-blog" class="sidebar-item">
-      <h3 class="sp">últimos</h3>
-      <div class="aside-box especial">
-        <div *ngIf="!projects">
-          <div class="spinner-grow" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-
+  </div>
+  <div id="nav-blog" class="sidebar-item">
+    <h3 class="sp">últimos</h3>
+    <div class="aside-box especial">
+      <div *ngIf="!projects">
+        <div class="spinner-grow" role="status">
+          <span class="sr-only">Loading...</span>
         </div>
 
-        <article class="project-item-especial" *ngFor="let project of projects">
-          <a [routerLink]="['/portfolio']" >
-            <img class="w-25" [src]="project.image.secure_url">
-            <h5 id="last-projects-title">{{project.title}}</h5>
-          </a>
-        </article>
-        <a class="mas m-3" [routerLink]="['/portfolio']"><strong>Ver mas proyectos</strong></a>
       </div>
 
+      <article class="project-item-especial" *ngFor="let project of projects">
+        <a routerLink="portfolio/get-all-projects/get-project/{{project._id}}&{{project.title}}">
+          <img class="w-25" [src]="project.image.secure_url">
+          <h5 id="last-projects-title">{{project.title}}</h5>
+        </a>
+      </article>
     </div>
 
-    <div class="sidebar-item">
-      <h3 class="sp">REDES SOCIALES</h3>
-      <div id="social" class="aside-box">
-        <div class="twitter">
-          <a class="icon twit" href="https://twitter.com/escnil994" target="_blank">t</a>
-        </div>
-        <div class="facebook">
-          <a class="icon face" href="https://facebook.com/escnil994" target="_blank">f</a>
-        </div>
-        <div class="youtube">
-          <a [routerLink]="['/contacts']" class="mas"><strong>ver mas</strong></a>
-        </div>
+  </div>
+
+  <div class="sidebar-item">
+    <h3 class="sp">REDES SOCIALES</h3>
+    <div id="social" class="aside-box">
+      <div class="twitter">
+        <a class="icon twit" href="https://twitter.com/escnil994" target="_blank">t</a>
       </div>
-
+      <div class="facebook">
+        <a class="icon face" href="https://facebook.com/escnil994" target="_blank">f</a>
+      </div>
+      <div class="youtube">
+        <a [routerLink]="['/contacts']" class="mas"><strong>ver mas</strong></a>
+      </div>
     </div>
-  </aside>
 
-  <div class="clearfix"></div>
+  </div>
+</aside>
+
+<div class="clearfix"></div>
