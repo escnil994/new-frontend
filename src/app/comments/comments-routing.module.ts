@@ -6,7 +6,8 @@ import { ApproveCommentComponent } from "./approve-comment/approve-comment.compo
 const routes: Routes = [
   {
     path: 'approve-comment/:id',
-    component: ApproveCommentComponent
+    component: ApproveCommentComponent,
+    data: { title: 'Approve Comment' }
   }
 
 ]

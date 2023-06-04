@@ -5,7 +5,8 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-contacts',
-  templateUrl: './my-contacts.component.html'
+  templateUrl: './my-contacts.component.html',
+  styleUrls: ['./my-contacts.component.css']
 })
 export class MyContactsComponent implements OnInit {
 

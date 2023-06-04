@@ -1,12 +1,28 @@
 <aside id="sidebar">
-
+  <div class="sidebar-item" *ngIf="isAdmin">
+    <h3 class="sp">ADMIN OPTIONS</h3>
+    <div id="social" class="aside-box">
+      <div class="general-text">
+        <a id="create" routerLink="portfolio/create-project">
+          <img class="w-25" [src]="" />
+          <h5 id="last-projects-title">New Project</h5>
+        </a>
+      </div>
+      <div class="general-text">
+        <a id="create" routerLink="blog/create-post">
+          <img class="w-25" [src]="" />
+          <h5 id="last-projects-title">New Post</h5>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <div id="search" class="sidebar-item">
     <h3 class="sp">Buscador</h3>
     <div class="aside-box buscador">
       <form>
-        <input name="search" id="bnt-look" disabled placeholder="Not available yet">
-        <input class="icon icon-look" type="submit" value="L" disabled>
+        <input name="search" id="bnt-look" disabled placeholder="Not available yet" />
+        <input class="icon icon-look" type="submit" value="L" disabled />
       </form>
     </div>
   </div>
@@ -17,17 +33,17 @@
         <div class="spinner-grow" role="status">
           <span class="sr-only">Loading...</span>
         </div>
-
       </div>
 
       <article class="project-item-especial" *ngFor="let project of projects">
-        <a routerLink="portfolio/get-all-projects/get-project/{{project._id}}&{{project.title}}">
-          <img class="w-25" [src]="project.image.secure_url">
-          <h5 id="last-projects-title">{{project.title}}</h5>
+        <a routerLink="portfolio/get-all-projects/get-project/{{
+            project._id
+          }}&{{ project.title }}">
+          <img class="w-25" [src]="project.image.secure_url" />
+          <h5 id="last-projects-title">{{ project.title }}</h5>
         </a>
       </article>
     </div>
-
   </div>
 
   <div class="sidebar-item">
@@ -43,8 +59,16 @@
         <a [routerLink]="['/contacts']" class="mas"><strong>ver mas</strong></a>
       </div>
     </div>
-
   </div>
 </aside>
 
 <div class="clearfix"></div>
+
+
+
+<style>
+  #create:hover {
+    text-decoration: underline !important;
+    color: black;
+  }
+</style>

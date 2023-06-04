@@ -1,0 +1,30 @@
+@media (max-width: 645px){
+  .w-75{
+    width: 90% !important;
+  }
+
+  .col-6{
+    width: 90% !important;
+  }
+}
+
+@media (max-width: 1200px){
+  .w-75{
+    width: 85% !important;
+  }
+
+  .col-6{
+    width: 70% !important;
+  }
+}
+
+
+@media (max-width: 900px){
+  .w-75{
+    width: 90% !important;
+  }
+
+  .col-6{
+    width: 90% !important;
+  }
+}

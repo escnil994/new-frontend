@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { commentInterface } from '../interfaces/comment.interface';
@@ -20,13 +20,19 @@ export class CommentService {
 
   getComments(from: number = 0, limit: number = 0): Observable<commentInterface>{
 
+    const headers = new HttpHeaders({
+      'x-token': '',
+      'Xpagination': 'dendubedubeuibedu'
+    })
+
+
     if(from < 0){
       from = 0
     }
 
     const url: string = `${base_url}comment/get-comments?from=${from}&limit=${limit}`
 
-    return this._http.get<commentInterface>(url)
+    return this._http.get<commentInterface>(url, {headers})
   }
 
   getComment(id: string){

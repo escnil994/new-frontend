@@ -91,3 +91,56 @@
 </nav>
 
 
+
+
+
+
+
+  private readonly base_url: string = environment.backend
+
+
+
+
+
+  constructor(
+    private _http: HttpClient,
+  ) { }
+
+  get token(): string {
+    return localStorage.getItem('x-token') || ''
+  }
+
+
+
+
+  loginUser(data: any) {
+    const url = `${this.base_url}auth/login`
+
+    return this._http.post<LoginInterface>(url, data).pipe(map(data => {
+      localStorage.setItem('x-token', data.token)
+
+      return data
+    }))
+
+
+  }
+
+
+  validateLogin() {
+
+    const headers = new HttpHeaders({
+      'x-token': this.token,
+    })
+
+
+    const url = `${this.base_url}auth/validate-token`
+
+    return this._http.get<LoginInterface>(url, {headers}).pipe(
+      map(({ok}) => {
+        return ok
+      })
+    )
+  }
+
+
+  //@Output() userEvent: EventEmitter<LoginInterface> = new EventEmitter<LoginInterface>
