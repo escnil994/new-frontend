@@ -1,0 +1,13 @@
+#adminOptions{
+  position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    transform: translate(-110px, 60px);
+    color: white !important;
+}
+
+
+.dropdown-item:hover{
+  color: rgba(56, 60, 63, 1)  !important;
+  cursor: pointer;
+}

@@ -1,27 +1,16 @@
 <aside id="sidebar">
-  <div class="sidebar-item" *ngIf="isAdmin">
-    <h3 class="sp">ADMIN OPTIONS</h3>
-    <div id="social" class="aside-box">
-      <div class="general-text">
-        <a id="create" routerLink="portfolio/create-project">
-          <img class="w-25" [src]="" />
-          <h5 id="last-projects-title">New Project</h5>
-        </a>
-      </div>
-      <div class="general-text">
-        <a id="create" routerLink="blog/create-post">
-          <img class="w-25" [src]="" />
-          <h5 id="last-projects-title">New Post</h5>
-        </a>
-      </div>
-    </div>
-  </div>
+
 
   <div id="search" class="sidebar-item">
     <h3 class="sp">Buscador</h3>
     <div class="aside-box buscador">
       <form>
-        <input name="search" id="bnt-look" disabled placeholder="Not available yet" />
+        <input
+          name="search"
+          id="bnt-look"
+          disabled
+          placeholder="Not available yet"
+        />
         <input class="icon icon-look" type="submit" value="L" disabled />
       </form>
     </div>
@@ -36,9 +25,11 @@
       </div>
 
       <article class="project-item-especial" *ngFor="let project of projects">
-        <a routerLink="portfolio/get-all-projects/get-project/{{
+        <a
+          routerLink="portfolio/get-all-projects/get-project/{{
             project._id
-          }}&{{ project.title }}">
+          }}&{{ project.title }}"
+        >
           <img class="w-25" [src]="project.image.secure_url" />
           <h5 id="last-projects-title">{{ project.title }}</h5>
         </a>
@@ -50,10 +41,20 @@
     <h3 class="sp">REDES SOCIALES</h3>
     <div id="social" class="aside-box">
       <div class="twitter">
-        <a class="icon twit" href="https://twitter.com/escnil994" target="_blank">t</a>
+        <a
+          class="icon twit"
+          href="https://twitter.com/escnil994"
+          target="_blank"
+          >t</a
+        >
       </div>
       <div class="facebook">
-        <a class="icon face" href="https://facebook.com/escnil994" target="_blank">f</a>
+        <a
+          class="icon face"
+          href="https://facebook.com/escnil994"
+          target="_blank"
+          >f</a
+        >
       </div>
       <div class="youtube">
         <a [routerLink]="['/contacts']" class="mas"><strong>ver mas</strong></a>
@@ -64,11 +65,13 @@
 
 <div class="clearfix"></div>
 
-
-
 <style>
   #create:hover {
     text-decoration: underline !important;
     color: black;
+  }
+  #logout{
+    cursor: pointer;
+    color: red  !important;
   }
 </style>

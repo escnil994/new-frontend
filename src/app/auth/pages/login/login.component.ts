@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
   async ngOnInit() {
 
 
-    /*
+
     this._authService.validateLogin().subscribe(response => {
 
-      if (response) {
+      if (response.ok) {
 
         Swal.fire({
           position: 'center',
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
     })
 
-    */
+
   }
 
   constructor(
@@ -60,8 +60,9 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    /*
+
     this._authService.loginUser(this.loginForm.value).subscribe(data => {
+
 
       if (data.ok) {
 
@@ -85,7 +86,7 @@ export class LoginComponent implements OnInit {
         'Error Logging In',
         'error'
       )
-    })*/
+    })
   }
 
 }

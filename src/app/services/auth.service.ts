@@ -1,4 +1,4 @@
-import { map, Observable } from 'rxjs';
+import { map, Observable, subscribeOn, tap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Output, EventEmitter, inject } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
@@ -15,26 +15,65 @@ export class AuthService {
 
 
 
-
-  private readonly BaseUrl: string = environment.backend
-
-  private _http = inject( HttpClient )
-/*
-  private _currentUser = signal<User|null>(null)
-  private _authStatus = signal<AuthStatus>()
-*/
+  public statusLogged!: boolean
 
 
-  constructor(){}
+  private readonly base_url: string = environment.backend
 
-  login(email: string, password: string){
+  @Output() userEvent: EventEmitter<LoginInterface> = new EventEmitter<LoginInterface>
 
+
+
+
+  constructor(
+    private _http: HttpClient,
+  ) { }
+
+  get token(): string {
+    return localStorage.getItem('x-token') || ''
+  }
+
+
+
+
+
+
+
+  loginUser(data: any) {
+    const url = `${this.base_url}auth/login`
+
+    return this._http.post<LoginInterface>(url, data).pipe(map(data => {
+      localStorage.setItem('x-token', data.token)
+
+      return data
+    }))
 
 
   }
 
 
 
+
+
+
+  validateLogin() {
+
+    const headers = new HttpHeaders({
+      'x-token': this.token,
+    })
+
+
+    const url = `${this.base_url}auth/validate-token`
+
+    return this._http.get(url, { headers }).pipe(
+      tap((res: any) => {
+        localStorage.setItem('x-token', res.token)
+      }),
+      map(res => {
+        return res
+      })
+    )
+  }
 }
 
 

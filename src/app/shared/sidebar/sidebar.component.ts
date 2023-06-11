@@ -23,15 +23,16 @@ export class SidebarComponent implements OnInit {
     private router: Router,
   ) {
 
-    /*
+
     this.authService.validateLogin().subscribe(response => {
 
-      if (response) {
+
+      if (response.ok) {
         this.isAdmin = true
       }
     })
 
-    */
+
 
 
   }
@@ -39,7 +40,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
 
-/*
+
 
     this.authService.userEvent.subscribe(({ok}) => {
 
@@ -63,9 +64,14 @@ export class SidebarComponent implements OnInit {
 
     })
 
-*/
 
 
+
+  }
+
+
+  logout(){
+    localStorage.removeItem('x-token')
   }
 
 }
