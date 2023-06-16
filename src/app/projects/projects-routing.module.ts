@@ -1,26 +1,27 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivateFn } from '@angular/router';
 import { GetAllComponent } from './get-all/get-all.component';
 import { GetOneComponent } from './get-one/get-one.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
-import { AuthGuard } from '../guards/auth.guard';
+import { isAuthenticatedGuard } from '../guards/is-authenticated.guard';
+import { BannerComponent } from '../shared/banner/banner.component';
 
 const routes: Routes = [
   {
     path: 'get-all-projects',
     component: GetAllComponent,
-    data: { title: 'Projects'}
+    data: { title: 'Projects', banner: 'Projects List'}
   },
   {
     path: 'get-all-projects/get-project/:id',
     component: GetOneComponent,
-    data: { title: 'Project'}
+    data: { title: 'Project', banner: 'Project'}
   },
   {
     path: 'create-project',
-    canActivate: [AuthGuard],
+    canActivate: [isAuthenticatedGuard],
     component: CreateProjectComponent,
-    data: { title: 'Creating project'}
+    data: { title: 'Creating project', banner: 'Creating a new project'}
   },
   {
     path: '',

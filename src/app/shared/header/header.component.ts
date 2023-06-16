@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthStatus } from 'src/app/interfaces/auth-status.enum';
 
 @Component({
   selector: 'app-header',
@@ -25,20 +26,7 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) {
 
-    this.authService.validateLogin().subscribe(response => {
 
-
-      if (response.ok) {
-        this.login = true
-
-
-        this.name = response.name
-
-      }
-
-
-
-    })
 
   }
 
@@ -46,30 +34,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    this.authService.userEvent.subscribe(response => {
-
-
-      if (response.ok) {
-        this.login = true
-
-        this.name = response.user.name
-
-      }
-
-
-
-    })
-
+    this.authStatusChangedEfect
 
   }
 
 
   logout() {
 
-    localStorage.removeItem('x-token')
 
-    this.authService.userEvent.emit();
+    this.authService.logout()
 
 
 
@@ -81,6 +54,22 @@ export class HeaderComponent implements OnInit {
 
   }
 
+
+
+  public authStatusChangedEfect = effect(() => {
+
+    let isLoggued: string = this.authService.authStatus()
+
+    if (isLoggued === AuthStatus.authenticated) {
+      this.login = true
+    }else{
+      this.login = false
+
+    }
+
+
+
+  })
 
 
 

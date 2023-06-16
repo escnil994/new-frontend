@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'approve-comment/:id',
     component: ApproveCommentComponent,
-    data: { title: 'Approve Comment' }
+    data: { title: 'Approve Comment', banner: 'Aproving comment: '}
   }
 
 ]

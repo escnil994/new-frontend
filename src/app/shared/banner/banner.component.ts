@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ActivationEnd, Router } from '@angular/router';
+import { filter, map, subscribeOn } from 'rxjs';
 
 @Component({
   selector: 'app-banner',
@@ -7,9 +9,22 @@ import { Component } from '@angular/core';
   ]
 })
 export class BannerComponent{
-  
+  public sliderName: string = ''
 
-  public sliderName: string = 'Welcome to Nilson Web > nilson-escobar.com'
+  constructor(
+    private router: Router
+  ){
+    this.router.events.pipe(
+      filter((event) => event instanceof ActivationEnd ),
+      filter( (event: any) => event.snapshot.firstChild === null),
+      map( (event: ActivationEnd) => event.snapshot.data )
+    ).
+    subscribe( ({banner}) => {
+
+      this.sliderName = banner
+
+    })
+  }
 
 
 

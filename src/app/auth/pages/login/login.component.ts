@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect, inject, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthStatus } from 'src/app/interfaces/auth-status.enum';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
@@ -11,48 +12,79 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
+  public _authService = inject(AuthService)
+
+
+  public loginSucccess: boolean = false
+  public loginFailed: boolean = false
+  public loginMessage: string = ''
+
+  public validForm: boolean = false
+
   public loginForm = this.fb.group({
-    email: ['escnil994@gmail.com', [Validators.required, Validators.email]],
-    password: ['12345678', [Validators.required, Validators.minLength(6)]],
+    email: [localStorage.getItem('user')||'', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
     remember: [false]
   })
 
 
-  async ngOnInit() {
 
 
 
-    this._authService.validateLogin().subscribe(response => {
 
-      if (response.ok) {
 
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'You are already Logged In',
-          showConfirmButton: false,
-          timer: 1500
-        })
 
-        setTimeout(() => {
-          this.router.navigate(['/'])
 
-        }, 1500);
+  ngOnInit() {
 
-      }
 
-    }, err => {
 
-    })
+
+
+
 
 
   }
 
   constructor(
     private fb: FormBuilder,
-    private _authService: AuthService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
+
+
+
+
+
+  public authStatusChangeEffect = effect(() => {
+
+
+    switch (this.authService.authStatus()) {
+
+      case AuthStatus.checking:
+        return
+      case AuthStatus.notAuthenticated:
+
+
+        return
+
+      case AuthStatus.authenticated:
+
+
+        Swal.fire({
+          title: 'You are logged correctly',
+          html: 'You are redirected to home ...',
+          timer: 2000,
+          didOpen: () => {
+            Swal.showLoading()
+            this.router.navigate(['/'])
+          }
+        })
+
+        return
+
+    }
+  })
 
 
 
@@ -60,33 +92,67 @@ export class LoginComponent implements OnInit {
 
 
   login() {
+    const email: string = this.loginForm.value.email || ''
+    const password: string = this.loginForm.value.password || ''
 
-    this._authService.loginUser(this.loginForm.value).subscribe(data => {
+
+    if (this.loginForm.valid) {
 
 
-      if (data.ok) {
 
-        this._authService.userEvent.emit(data)
-        Swal.fire(
-          'Success', 'Logged In', 'success'
-        )
-        this.router.navigate(['/'])
-      } else {
-        Swal.fire(
-          'Error',
-          'Error Logging In',
-          'error'
-        )
-      }
-    }, err => {
-      console.log(err);
+      this._authService.login(email, password).subscribe({
+        next: (resp) => {
 
-      Swal.fire(
-        'Error',
-        'Error Logging In',
-        'error'
-      )
-    })
+          if(this.loginForm.value.remember){
+            localStorage.setItem('user', this.loginForm.value.email||'')
+          }
+
+          this.loginSucccess = true
+          this.loginMessage = `Welcome ${resp.user.user.name}, you're being redirected  `
+
+          setTimeout(() => {
+            this.loginSucccess = false
+            this.router.navigate(['/'])
+
+          }, 0);
+
+
+
+
+        },
+        error: (msg) => {
+
+          this.loginFailed = true
+          this.loginMessage = ` ${msg}, try againg`
+
+          this.loginForm.reset()
+
+          setTimeout(() => {
+            this.loginFailed = false
+            this.validForm = false
+
+          }, 3000);
+
+
+
+        }
+
+      })
+
+    } else {
+
+      this.validForm = true
+
+
+
+
+
+
+
+    }
+
+
+
   }
 
 }

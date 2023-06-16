@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { GetAllComponent } from './get-all/get-all.component';
 import { GetOneComponent } from './get-one/get-one.component';
-import { YouTubePlayerModule } from '@angular/youtube-player';
 import { CreateProjectComponent } from './create-project/create-project.component';
+import { BannerComponent } from '../shared/banner/banner.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { CreateProjectComponent } from './create-project/create-project.componen
   imports: [
     CommonModule,
     ProjectsRoutingModule,
-    YouTubePlayerModule
+    SharedModule
   ]
 })
 export class ProjectsModule { }

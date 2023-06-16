@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivationEnd, Router } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import { Project } from 'src/app/models/project.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -13,6 +12,9 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class SidebarComponent implements OnInit {
 
+
+  @Input() banner: string = ''
+
   public projects: Project[] = []
 
   public isAdmin: boolean = false
@@ -24,13 +26,7 @@ export class SidebarComponent implements OnInit {
   ) {
 
 
-    this.authService.validateLogin().subscribe(response => {
 
-
-      if (response.ok) {
-        this.isAdmin = true
-      }
-    })
 
 
 
@@ -41,16 +37,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
 
 
-
-    this.authService.userEvent.subscribe(({ok}) => {
-
-      if (ok) {
-        this.isAdmin = true
-
-      }else{
-        this.isAdmin = false
-      }
-    })
 
 
 
@@ -70,8 +56,6 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  logout(){
-    localStorage.removeItem('x-token')
-  }
+
 
 }
