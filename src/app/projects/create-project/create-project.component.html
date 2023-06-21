@@ -1,19 +1,21 @@
 <div id="body">
 
-  <h3>New Project</h3>
+
+
+  <h3 class="general-text">New Project</h3>
   <hr>
 
 
 
 
-  <div class="m-3 p-3">
+  <div class="m-3 p-3 JetBrains">
 
-    <form>
+    <form (submit)="createProject()" id="loginForm" [formGroup]="projectForm">
       <!-- Project title -->
       <div class="row mb-4">
         <div class="col">
           <div class="form-outline">
-            <input type="text" id="title" class="form-control inputs" />
+            <input type="text" id="title" class="form-control inputs" formControlName="title" />
             <label class="form-label" for="title">Project Title</label>
           </div>
         </div>
@@ -21,33 +23,11 @@
 
       <!-- Project content -->
       <div class="form-outline mb-4">
-        <textarea class="form-control" id="content" rows="4"></textarea>
+        <textarea class="form-control" id="content" formControlName="content" rows="4"></textarea>
         <label class="form-label" for="content">Project Content</label>
       </div>
 
 
-      <div class="row">
-        <!-- Github URL -->
-        <div class="col">
-          <div class="form-outline mb-4">
-            <input type="url" id="github" class="form-control" />
-            <label class="form-label" for="github">GitHub URL</label>
-          </div>
-
-        </div>
-
-
-        <!-- Project URL -->
-        <div class="col">
-          <div class="form-outline mb-4">
-            <input type="url" id="url" class="form-control inputs" id="" />
-            <label class="form-label" for="url">Project URL</label>
-          </div>
-        </div>
-
-
-
-      </div>
 
 
 
@@ -55,43 +35,75 @@
       <div class="row">
         <!-- More -->
         <div class="col-7">
+
+          <!-- Github URL -->
           <div class="form-outline mb-4">
-            <textarea class="form-control" id="more" rows="4"></textarea>
+            <input type="url" id="github" class="form-control" formControlName="github" />
+            <label class="form-label" for="github">GitHub URL</label>
+          </div>
+
+
+
+          <!-- Project URL -->
+          <div class="form-outline mb-4">
+            <input type="url" id="url" class="form-control inputs" formControlName="url" />
+            <label class="form-label" for="url">Project URL</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="url" id="video" class="form-control inputs" formControlName="video" />
+            <label class="form-label" for="video">Video</label>
+
+          </div>
+
+
+
+          <div class="form-outline mb-4">
+            <textarea class="form-control" id="more" rows="4" formControlName="more"></textarea>
             <label class="form-label" for="more">Additional information</label>
           </div>
         </div>
 
         <div class="col-5">
           <!-- Video -->
-          <div class="form-outline mb-4">
-            <input type="url" id="video" class="form-control inputs" />
-            <label class="form-label" for="video">Video</label>
+
+          <div class="card">
+            <div class="card-body">
+
+              <input class="form-control" type="file" id="image" formControlName="image" (change)="onFileSelected($event)">
+
+            </div>
+          </div>
+          <br>
+
+          <div class="card card-image">
+            <div class="card-body">
+
+              <img src="{{imagePreview}}" class="image">
+
+            </div>
           </div>
 
+
         </div>
 
       </div>
+      <!-- Submit button -->
 
-
-      <div class="row">
-        <div class="col">
-
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-block mb-4">Save Project</button>
-
+      <div class="row" *ngIf="saving">
+        <h1>Adding Project</h1>
+        <div class="spinner-grow text-danger m-auto" style="width: 3rem; height: 3rem;" role="status">
         </div>
       </div>
 
-
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Save Project</button>
 
 
     </form>
 
 
-
-
-
   </div>
+
 
 
 

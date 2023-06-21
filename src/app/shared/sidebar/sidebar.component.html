@@ -1,4 +1,17 @@
-<aside id="sidebar">
+<aside id="sidebar" class="JetBrains">
+
+  <div  class="sidebar-item" *ngIf="info">
+    <h3 class="sp">RESUME</h3>
+    <div  class="aside-box " style="height: 150px !important;">
+      <h5>
+        Download a resume copy here
+      </h5>
+
+        <br>
+        <a href="{{url}}"><i class="fa-solid fa-file-pdf fa-2xl" style="color: #952601;"></i></a>
+      </div>
+
+  </div>
 
 
   <div id="search" class="sidebar-item">
@@ -9,7 +22,6 @@
           name="search"
           id="bnt-look"
           disabled
-          placeholder="Not available yet"
         />
         <input class="icon icon-look" type="submit" value="L" disabled />
       </form>
@@ -57,7 +69,7 @@
         >
       </div>
       <div class="youtube">
-        <a [routerLink]="['/contacts']" class="mas"><strong>ver mas</strong></a>
+        <a [routerLink]="['/contacts']" class="mas JetBrains"><strong>ver mas</strong></a>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@ import { PostsModule } from './posts/posts.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentModule } from './comments/comments.module';
 import { AuthModule } from './auth/auth.module';
-import { BannerComponent } from './shared/banner/banner.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { BannerComponent } from './shared/banner/banner.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     SharedModule,
     PostsModule,

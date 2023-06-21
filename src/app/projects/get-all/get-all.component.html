@@ -14,7 +14,7 @@
   <h3 class="general-text">PROJECTS ({{total}})</h3>
   <hr />
   <div id="posts" class="mt-3" *ngFor="let project of projects" >
-    <article id="showed-post" routerLink="get-project/{{project._id}}&{{project.title}}">
+    <article id="showed-post" class="JetBrains" routerLink="get-project/{{project._id}}&{{project.title}}">
       <div id="post-title-item">
         <h4>
           <span id="post-title" class="general-text">{{ project.title }}</span>

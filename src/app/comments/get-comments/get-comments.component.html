@@ -1,10 +1,10 @@
 <div class="col-">
   <div class="row w-75 m-auto">
-    <h4 class="text-left">{{total}} comments</h4>
+    <h4 class="text-left general-text">{{total}} comments</h4>
     <hr />
     <br /><br />
 
-    <div class="row w-65 m-auto" *ngFor="let item of comments">
+    <div class="row w-100 m-auto JetBrains" *ngFor="let item of comments">
       <code *ngIf="!item.allowed" class="text-warning">
         This comment is not approved yet
       </code>
@@ -16,10 +16,10 @@
       <div class="col-10">
 
 
-        <p class="text-left mb-0">
-          <strong>{{ item.name }}</strong>
-        </p>
-        <p class="text-left">{{ item.date | date : "MMM d" }}</p>
+        <h5 class="text-left mb-0">
+          {{ item.name }}
+        </h5>
+        <p class="text-left text-secondary">{{ item.date | date : "MMM d" }}</p>
 
         <p class="text-left">
           {{ item.comment }}

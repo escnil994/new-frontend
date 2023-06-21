@@ -1,50 +1,46 @@
 <div id="body">
-    <h1 class="subheader general-text">{{project?.title || ''}}</h1>
-    <article class="project-detail">
-      <div class="image-wrap-unit">
-        <img src="{{project?.image?.secure_url || ''}}" alt="Project image"/>
-      </div>
-      <div class="date text-secondary font-weight-bold text-capitalize">
-        <span>
-          {{project?.date | date }}
-        </span>
-      </div>
-      <br>
-      <div class="details">
-        <h2 class="text-center general-text">Descripción:</h2>
-        <p id="font-desc">
-          {{project?.content}}
-        </p>
-      </div>
-      <div class="details">
-        <h2 class="text-center general-text"></h2>
-        <p id="font-desc">
-          {{project?.more}}
-        </p>
-      </div>
-      <div class="details">
-        <h4 class="text-center general-text">Puedes ver en la siguiente url:</h4>
-        <a class="font-weight-bold"  href="{{project?.url}}">{{project?.title}}</a>
-      </div>
+  <h1 class="subheader general-text">{{project?.title || ''}}</h1>
+  <article class="project-detail JetBrains">
+    <div class="image-wrap-unit">
+      <img src="{{project?.image?.secure_url || ''}}" alt="Project image" />
+    </div>
+    <div class="date text-secondary font-weight-bold text-capitalize">
+      <span>
+        {{project?.date | date }}
+      </span>
+    </div>
+    <br>
+    <div class="details">
+      <h2 class="text-center general-text">Descripción:</h2>
+      <p id="font-desc">
+        {{project?.content}}
+      </p>
+    </div>
+    <div class="details">
+      <h2 class="text-center general-text"></h2>
+      <p id="font-desc">
+        {{project?.more}}
+      </p>
+    </div>
+    <div class="details">
+      <h4 class="text-center general-text">Puedes ver en la siguiente url:</h4>
+      <a class="font-weight-bold" href="{{project?.url}}">{{project?.title}}</a>
+    </div>
 
 
-      <div class="video general-text">
-        <h4>Tambien puedes ver el video donde te doy una pequeña expliación de como está echo:</h4>
-        <div id="video">
+    <div class="video general-text">
+      <h4>Tambien puedes ver el video donde te doy una pequeña expliación de como está echo:</h4>
+      <div id="video">
 
-          <!--<youtube-player videoId="{{project?.video || ''}}" [width]="375" [height]="200"></youtube-player>
---->
-        </div>
+
+        <youtube-player videoId="{{project?.video}}"></youtube-player>
+
       </div>
+    </div>
 
 
-      <div class="clearfix"></div>
+    <div class="clearfix"></div>
 
-    </article>
+  </article>
 
 </div>
-
-
-
-
-

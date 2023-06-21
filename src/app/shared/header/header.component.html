@@ -1,53 +1,55 @@
-<div class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient text-white">
-  <div id="logo" routerLink="/blog">
-    <span class="gear">S</span>
-    <h3>ESCNIL994</h3>
+
+
+
+
+<nav class="navbar fixed-top  navbar-dark bg-dark bg-gradient text-white navbar-expand-md">
+  <div class="container-fluid">
+
+    <div id="logo" routerLink="/blog">
+      <span class="gear">S</span>
+      <h3>ESCNIL994</h3>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse general-text items-header" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto d-flex">
+        <li class="list-item m-3">
+          <a class="text-white text-header" [routerLink]="['blog/get-all-posts']">Blog</a>
+        </li>
+        <li class="list-item m-3">
+          <a class="text-white text-header" [routerLink]="['portfolio/get-all-projects']">Proyects</a>
+        </li>
+        <li class="list-item m-3">
+          <a class="text-white text-header" [routerLink]="['auth/escnil994-information']">{{headerTitleModifible}}</a>
+        </li>
+        <li class="list-item m-3">
+          <a class="text-white text-header" [routerLink]="['auth/escnil994-contact']">Contact</a>
+        </li>
+        <div class="flex-shrink-0 dropdown m-3 list-item" *ngIf="login">
+          <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser2"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{image}}" alt="mdo" width="32" height="40" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small shadow navbar-dark bg-dark bg-gradient fade-in-left" id="adminOptions"
+            aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item general-text text-white" routerLink="/portfolio/create-project">New
+                project...</a></li>
+            <li><a class="dropdown-item general-text text-white" routerLink="blog/create-post">New post...</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item general-text text-white" (click)="logout()">Sign out</a></li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+
+
   </div>
+</nav>
 
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse general-text items-header" id="navbarSupportedContent">
-    <ul class="navbar-nav ms-auto d-flex">
-      <li class="list-item m-3">
-        <a class="text-white" [routerLink]="['blog/get-all-posts']">Blog</a>
-      </li>
-      <li class="list-item m-3">
-        <a class="text-white" [routerLink]="['portfolio/get-all-projects']">Proyects</a>
-      </li>
-      <li class="list-item m-3">
-        <a class="text-white" [routerLink]="['auth/escnil994-information']">About me</a>
-      </li>
-      <li class="list-item m-3">
-        <a class="text-white" [routerLink]="['auth/escnil994-contact']">Contact</a>
-      </li>
-      <div class="flex-shrink-0 dropdown m-3 list-item" *ngIf="login">
-        <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{image}}" alt="mdo" width="32" height="40" class="rounded-circle">
-        </a>
-        <ul class="dropdown-menu text-small shadow navbar-dark bg-dark bg-gradient fade-in-left" id="adminOptions" aria-labelledby="dropdownUser2">
-          <li><a class="dropdown-item general-text text-white" routerLink="/portfolio/create-project">New project...</a></li>
-          <li><a class="dropdown-item general-text text-white" routerLink="blog/create-post">New post...</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item general-text text-white"(click)="logout()">Sign out</a></li>
-        </ul>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </ul>
-  </div>
-</div>
+<br>
+<br><br><br>

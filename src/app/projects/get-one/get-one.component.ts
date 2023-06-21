@@ -13,22 +13,23 @@ export class GetOneComponent implements OnInit {
 
   public project: any
 
+  public dangerousVideoUrl: any
+  public videoUrl: any
+
   constructor(
     private router: Router,
     private projectService: ProjectService
-  ) { }
+    , private _sanitizer: DomSanitizer
+  ) {
+
+   }
 
 
   ngOnInit() {
 
-    const tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.body.appendChild(tag);
-
-
 
     const id = this.router.url.split('/')[4].split('&')[0]
+
 
 
 
@@ -39,13 +40,21 @@ export class GetOneComponent implements OnInit {
 
   getProject(id: string) {
 
-    this.projectService.getProject(id).subscribe(({ project, ok }) => {
+    this.projectService.getProject(id).subscribe((res: any) => {
 
-      this.project = project
+      this.project = res.project
+
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+
 
     })
 
   }
+
+
+
 
 
 

@@ -19,8 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'create-project',
-    canActivate: [isAuthenticatedGuard],
     component: CreateProjectComponent,
+    canActivate: [isAuthenticatedGuard],
     data: { title: 'Creating project', banner: 'Creating a new project'}
   },
   {

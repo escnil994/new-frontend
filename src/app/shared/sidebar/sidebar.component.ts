@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  ActivationEnd, Router } from '@angular/router';
+import { filter, map } from 'rxjs';
 import { Project } from 'src/app/models/project.model';
-import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,29 +13,49 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class SidebarComponent implements OnInit {
 
+  public url: string = ''
 
   @Input() banner: string = ''
 
   public projects: Project[] = []
 
-  public isAdmin: boolean = false
+  public info: boolean = false
 
   constructor(
     private projectService: ProjectService,
-    private authService: AuthService,
     private router: Router,
-  ) {
-
-
-
-
-
-
-
-  }
+    private utilsService: UtilsService
+  ) {}
 
 
   ngOnInit(): void {
+
+
+
+    {
+      this.router.events.pipe(
+        filter((event) => event instanceof ActivationEnd ),
+        filter( (event: any) => event.snapshot.firstChild === null),
+        map( (event: ActivationEnd) => event.snapshot.routeConfig )
+      ).
+      subscribe( (res) => {
+
+        if(res?.path === 'escnil994-information'){
+          this.info = true
+
+          this.utilsService.getImages().subscribe((data: any) => {
+            this.url = data.images.image_10
+          })
+
+        } else {
+
+          this.info = false
+
+          }
+
+      })
+    }
+
 
 
 

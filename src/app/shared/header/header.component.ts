@@ -2,6 +2,7 @@ import { Component, OnInit, effect } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AuthStatus } from 'src/app/interfaces/auth-status.enum';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-header',
@@ -14,17 +15,25 @@ export class HeaderComponent implements OnInit {
 
 
 
-  public image: string = 'https://res.cloudinary.com/dorqesogu/image/upload/v1684950584/utils/B612_20220428_120412_479_b8uu8d.jpg'
-
+  public image: string = ''
   public name: string = ''
 
   public login: boolean = false
 
 
+  public headerTitleModifible: string = 'ABOUT ME'
+
+
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private utils: UtilsService
   ) {
+
+    if(window.screen.width < 365){
+      this.headerTitleModifible = 'ABOUT'
+    }
+
 
 
 
@@ -33,6 +42,13 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.utils.getImages().subscribe((data: any) => {
+
+      this.image = data.images.image_01
+    })
+
+
 
     this.authStatusChangedEfect
 
