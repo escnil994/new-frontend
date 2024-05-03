@@ -7,7 +7,6 @@ import { GetOneComponent } from './get-one/get-one.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 
@@ -22,7 +21,6 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     ReactiveFormsModule,
     ProjectsRoutingModule,
     SharedModule,
-    YouTubePlayerModule
   ]
 })
 export class ProjectsModule { }

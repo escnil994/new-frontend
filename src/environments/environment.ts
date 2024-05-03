@@ -1,3 +1,3 @@
 export const environment = {
-  backend: 'http://localhost:3100/api/'
+  backend: 'https://backend-escnil994.herokuapp.com/api/'
 };
