@@ -59,4 +59,4 @@ jobs:
           app-name: 'page-escnil994'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F0859F94A04496BB5B2482BAF8CBE3F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C2A400C186F746EFA683DD6AF1AAA5B2 }}
