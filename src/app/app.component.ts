@@ -10,16 +10,5 @@ import { UtilsService } from './services/utils.service';
 })
 export class AppComponent {
 
-
-
-
-
-
-
-
-
-
-
-
-
+  title = 'Nilson Escobar'; 
 }
